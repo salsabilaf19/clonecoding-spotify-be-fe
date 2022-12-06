@@ -1,5 +1,4 @@
 import { Route, Switch, Redirect } from "react-router-dom";
-
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
 	const styles = {
 		padding: "6rem 0 0 26rem",
@@ -10,7 +9,6 @@ const PrivateRoute = ({ component: Component, user, ...rest }) => {
 
 	return (
 		<Switch>
-		
 		<Route
 			{...rest}
 			render={(props) =>

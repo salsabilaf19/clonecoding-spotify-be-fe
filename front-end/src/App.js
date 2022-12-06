@@ -1,4 +1,6 @@
 import { Fragment } from "react";
+// Switch just work in react-router-dom@ < 6 | Now using 5.3.20
+// For alternative, @6~ is using Routes
 import { Switch, Route, Redirect, useLocation } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import Main from "./pages/Main";
@@ -32,6 +34,7 @@ const App = () => {
 						<AudioPlayer />
 					</Fragment>
 				)}
+			
 			<Switch>
 				<Route exact path="/" component={Main} />
 				<PrivateRoute exact user={user} path="/home" component={Home} />
