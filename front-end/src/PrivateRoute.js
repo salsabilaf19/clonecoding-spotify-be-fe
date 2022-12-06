@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, user, ...rest }) => {
 	const styles = {
@@ -9,7 +9,7 @@ const PrivateRoute = ({ component: Component, user, ...rest }) => {
 	};
 
 	return (
-		<Routes>
+		<Switch>
 		
 		<Route
 			{...rest}
@@ -20,13 +20,13 @@ const PrivateRoute = ({ component: Component, user, ...rest }) => {
 						<Component {...props} />
 					</div>
 				) : (
-					<Navigate
+					<Redirect
 						to={{ pathname: "/login", state: { from: props.location } }}
 					/>
 				)
 			}
 		/>
-		</Routes>
+		</Switch>
 
 	);
 };
