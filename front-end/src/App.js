@@ -18,8 +18,26 @@ import LikedSongs from "./pages/LikedSongs";
 import Profile from "./pages/Profile";
 
 const App = () => {
+	
 	const user = true;
 	const location = useLocation();
+	
+	// gini kah guys cara consume api nya ?
+	useEffect(() => {
+		let token = null;
+		const root = JSON.parse(window.localStorage.getItem("persist:root"));
+
+		if (root) {
+			const { auth } = root;
+			const { user } = JSON.parse(auth);
+			if (user) token = user.token;
+		}
+
+		if (user && token) {
+			getUser(user._id, dispatch);
+			getPlayLists(dispatch);
+		}
+	}, [dispatch, user]);
 
 	return (
 		<Fragment>
